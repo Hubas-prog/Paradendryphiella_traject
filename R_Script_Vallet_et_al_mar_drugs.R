@@ -1,5 +1,5 @@
 ########################### SCRIPT ################################
-# laminariales host does impact lipid temperature trajectories of the fungal endophyte Paradendryphiella salina (G.K. Sutherl.)
+# Laminariales host does impact lipid temperaturetrajectories of the fungal endophyteParadendryphiella salina(G.K. Sutherl.)
 # by : Marine Vallet, Tarik Meziane, Najet Thiney, Soizic Prado, Cédric Hubas*
 # Submitted to Marine Drugs
 # *Corresponding author : cedric.hubas@mnhn.fr
