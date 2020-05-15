@@ -119,7 +119,7 @@ Concentration$temp <- substr(as.vector(Concentration$group), 5, 7)
 Concentration$salinity <- substr(as.vector(Concentration$group), 8, 9)
 
 # Optional ####################
-#write.table(Concentration,paste(path,"/tables/FA.table.conc.txt",sep=""))
+#write.table(Concentration,paste(getwd(),"/tables/FA.table.conc.txt",sep=""))
 
 #####################
 # AESTHETICS
