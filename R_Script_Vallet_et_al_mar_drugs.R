@@ -21,11 +21,11 @@ library(cowplot)
 #####################
 
 # Optional ####################
-setwd("/Users/cedric.hubas/Desktop/Working_Directory/") # change working directory address if needed
+#setwd("/Users/cedric.hubas/Desktop/Working_Directory/") # change working directory address if needed
 
 # file extraction and upload ####################
-path <- "/Users/cedric.hubas/Desktop/Working_Directory/" # change working directory address if needed 
-files <- list.files(path=path, pattern="*.txt")
+#path <- "/Users/cedric.hubas/Desktop/Working_Directory/" # change working directory address if needed 
+files <- list.files(pattern="*.txt") # if path changed use argument path = path
 List <- lapply(files, function(x) read.table(x,skip=1)[,c(2,4)])
 
 # Modify list names ####################
@@ -90,7 +90,7 @@ table$temp <- substr(as.vector(table$group), 5, 7)
 table$salinity <- substr(as.vector(table$group), 8, 9)
 
 # Optional ####################
-write.table(table,paste(path,"/tables/FA.table.percent.txt",sep=""))
+#write.table(table,paste(getwd(),"/tables/FA.table.percent.txt",sep=""))
 
 #####################
 # CONCENTRATIONS
@@ -105,7 +105,7 @@ table.C.FA=cast(C.FA2.m, group ~ V2,sum)
 table.C.FA[is.na(table.C.FA)] <- 0 ; table.C.FA
 
 # Import IS table ####################
-imported.C23 <- read.table(paste(path,"/tables/fill.C23copy.txt",sep=""),h=T) # importer le fichier C23 avec les poids
+imported.C23 <- read.table(paste(getwd(),"/tables/fill.C23copy.txt",sep=""),h=T) # importer le fichier C23 avec les poids
 
 column <- colnames(table.C.FA)!="23:0" # remove IS column
 inv.column <- colnames(table.C.FA)=="23:0" # retreive IS column
@@ -119,7 +119,7 @@ Concentration$temp <- substr(as.vector(Concentration$group), 5, 7)
 Concentration$salinity <- substr(as.vector(Concentration$group), 8, 9)
 
 # Optional ####################
-write.table(Concentration,paste(path,"/tables/FA.table.conc.txt",sep=""))
+#write.table(Concentration,paste(path,"/tables/FA.table.conc.txt",sep=""))
 
 #####################
 # AESTHETICS
