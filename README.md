@@ -6,12 +6,12 @@ txt files contain raw GC-FID data used in the analysis, tailored for ease of man
 
 List of packages :
 
-library(reshape) => to perform a pivot table from the list of txt files
-library(ggplot2)=> for data visualization
-library(rstatix)=> for simple and intuitive pipe-friendly framework. Needed to perform Welch ANOVA
-library(ade4) => for multivariate statistics
-library(factoextra)=> for improved data visualization of ade4 outputs 
-library(cowplot)=> for publication-quality figures with 'ggplot2'
+library(reshape) => to perform a pivot table from the list of txt files.
+library(ggplot2)=> for data visualization.
+library(rstatix)=> for simple and intuitive pipe-friendly framework (eeded to perform Welch ANOVA).
+library(ade4) => for multivariate statistics.
+library(factoextra)=> for improved data visualization of ade4 outputs.
+library(cowplot)=> for publication-quality figures with 'ggplot2'.
 
 Script correspondance:
 
