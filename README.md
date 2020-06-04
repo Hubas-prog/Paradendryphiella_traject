@@ -1,15 +1,18 @@
 # Paradendriphyella
 
-Supplementary materials for paper entitled: Identity and sequence: The effect of multiple stressors on microphytobenthos assemblages by James E V Rimmer, Cédric Hubas, Adam Wyness, Bruno Jesus, Morgan Hartley, Andrew J Blight, Antoine Prins, David M Paterson
+Supplementary materials for paper entitled: Laminariales host does impact lipid temperature trajectories of the fungal endophyte Paradendryphiella salina (G.K. Sutherl.) by  Vallet_et_al.
 
-xlsx files contain the data used in the analysis, tailored for ease of manipulation with R. 'Previous results to guide priors.xlsx' contains data from previous experiments which were used to guide the priors used in the Bayesian analysis. Rda files contain R processed objects (e.g. dataframes); their production can be recreated using code in the scripts. R files are the scripts used for the key analysis.
+txt files contain raw GC-FID data used in the analysis, tailored for ease of manipulation with R. 'R_Script_Vallet_et_al_mar_drugs.R' file contains the in-house R script used for data processing, univariate and multivariate statistics as well as figures. 'fill.C23copy.txt' file contains the amount of internal standard (C23) and the weight (in mg) of each sample. 
 
-Many functions used in the modelling are unique to the rstanarm package (https://mc-stan.org/rstanarm/). Stan priors can be specified manually or be allowed to scale to the data automatically (autoscale = TRUE) - the scaled priors used in this analysis are specified in the code to future-proof against changes to the package. See ?stan_lmer or ?stan_glm for more details.
+List of packages :
+
+library(reshape) => to perform a pivot table from the list of txt files
+library(ggplot2)=> for data visualization
+library(rstatix)=> for simple and intuitive pipe-friendly framework. Needed to perform Welch ANOVA
+library(ade4) => for multivariate statistics
+library(factoextra)=> for improved data visualization of ade4 outputs 
+library(cowplot)=> for publication-quality figures with 'ggplot2'
 
 Script correspondance:
 
-'Diatom community analysis.R' requires the xlsx file 'Diatom assemblage.xlsx'.
-
-'Data object creation.R' and 'Control models.R' requires the xlsx files 'Chlorophyll.xlsx', 'Critical erosion thresholds.xlsx', 'PAM time 1.xlsx', 'PAM time 2.xlsx', 'PAM time 3.xlsx'.
-
-'Disturbance and sequence models.R' relies on the R objects created by 'Data object creation.R', or the provided .rda files.
+'R_Script_Vallet_et_al_mar_drugs.R' generate stats and figures. It requires the txt files to generate a list of table and the fatty acid semiquantitative table (in %). It also requires, in addition, 'fill.C23copy.txt' to generate the concentration table.
