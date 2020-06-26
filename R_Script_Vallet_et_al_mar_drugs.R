@@ -291,6 +291,20 @@ plotlinearindex3 <- ggplot(flitdata,aes(y=index,x=temperature,col=sp)) +
 upper <- plot_grid(plotS1,plotS2,plotS3,labels=c("a)", "b)", "c)"),nrow=1)
 plot_grid(upper, plotlinearindex3,labels=c("", "d)"),nrow=2)
 
+slopes <- data.frame(alpha.value=c(3.13,1.42,0),
+                     salinity=c(23.5,50,70))
+
+# alpha/salinity relationship ####################
+
+ggplot(slopes,aes(x=salinity,y=alpha.value)) +
+  geom_point()+
+  geom_smooth(method="lm")+
+  theme_bw()+
+  My_Theme
+
+summary(lm(c(3.13,1.42,0)~c(23.5,50,70)))
+
+
 #####################
 # ANCOVA
 #####################
