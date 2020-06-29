@@ -216,15 +216,36 @@ res.stars <- do.call(rbind,lapply(res.over,make_stars))
 colnames(res.stars) <- c("16:0","16:1n-7","18:0","18:1n-7","18:1n-9","18:2n-6","18:3n-3") ; res.stars
 
 # plot ####################
-
-ggplot(TABLE.CONC2,aes(y=conc,x=fatty.acids,col=temp)) +
+TABLE.CONC2$type <- gsub("16:0","High",TABLE.CONC2$fatty.acids,fix=T)
+TABLE.CONC2$type <- gsub("16:1n-7","Low",TABLE.CONC2$type,fix=T)
+TABLE.CONC2$type <- gsub("18:0","Low",TABLE.CONC2$type,fix=T)
+TABLE.CONC2$type <- gsub("18:1n-7","Low",TABLE.CONC2$type,fix=T)
+TABLE.CONC2$type <- gsub("18:1n-9","High",TABLE.CONC2$type,fix=T)
+TABLE.CONC2$type <- gsub("18:2n-6","High",TABLE.CONC2$type,fix=T)
+TABLE.CONC2$type <- gsub("18:3n-3","Low",TABLE.CONC2$type,fix=T)
+  
+H<- ggplot(TABLE.CONC2[TABLE.CONC2$type=="High",],aes(y=conc,x=fatty.acids,col=temp)) +
 		geom_boxplot() + 
 		theme_bw() + 
-		facet_wrap(~paste(TABLE.CONC2$sp, " - ", TABLE.CONC2$salinity,sep="")) +
+		facet_wrap(~paste(TABLE.CONC2[TABLE.CONC2$type=="High",]$sp, " - ", TABLE.CONC2[TABLE.CONC2$type=="High",]$salinity,sep="")) +
 		scale_color_manual("Temperature (°C)",values=c("#81BDCA","#896587","#E98766")) +
 		ylab(expression(paste("Concentration (µg.",g^-1,")")))+
 		xlab("")+
+    theme(legend.position = "none")+
 		My_Theme
+
+L<- ggplot(TABLE.CONC2[TABLE.CONC2$type=="Low",],aes(y=conc,x=fatty.acids,col=temp)) +
+  geom_boxplot() + 
+  theme_bw() + 
+  facet_wrap(~paste(TABLE.CONC2[TABLE.CONC2$type=="Low",]$sp, " - ", TABLE.CONC2[TABLE.CONC2$type=="Low",]$salinity,sep="")) +
+  scale_color_manual("Temperature (°C)",values=c("#81BDCA","#896587","#E98766")) +
+  ylab(expression(paste("Concentration (µg.",g^-1,")")))+
+  xlab("")+
+  theme(legend.position = "none")+
+  My_Theme
+
+plot_grid(H, L,labels=c("a", "b)"),ncol=1)
+
 
 #####################
 # FIGURE 2
