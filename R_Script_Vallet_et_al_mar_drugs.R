@@ -321,6 +321,8 @@ ggplot(slopes,aes(x=salinity,y=alpha.value)) +
   geom_point()+
   geom_smooth(method="lm")+
   theme_bw()+
+  xlab("Salinity (PSU)")+
+  ylab("Alpha value (deg)")+
   My_Theme
 
 summary(lm(c(3.13,1.42,0)~c(23.5,50,70)))
