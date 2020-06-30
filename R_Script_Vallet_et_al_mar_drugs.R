@@ -312,10 +312,28 @@ plotlinearindex3 <- ggplot(flitdata,aes(y=index,x=temperature,col=sp)) +
 upper <- plot_grid(plotS1,plotS2,plotS3,labels=c("a)", "b)", "c)"),nrow=1)
 plot_grid(upper, plotlinearindex3,labels=c("", "d)"),nrow=2)
 
-slopes <- data.frame(alpha.value=c(3.13,1.42,0),
-                     salinity=c(23.5,50,70))
+# 3-way ANOVA FAI18C ####################
+
+
+flitdata %>%
+  group_by(sp, temp, salinity) %>%
+  identify_outliers(index) # no outliers
+
+flitdata %>%
+  group_by(sp, temp, salinity) %>%
+  shapiro_test(index) # normality assumption partially violated
+
+flitdata %>%
+  levene_test(index ~sp*temp*salinity)
+
+summary(aov(index ~ sp*temp*salinity, data = flitdata))
+
+
 
 # alpha/salinity relationship ####################
+
+slopes <- data.frame(alpha.value=c(3.13,1.42,0),
+                     salinity=c(23.5,50,70))
 
 ggplot(slopes,aes(x=salinity,y=alpha.value)) +
   geom_point()+
