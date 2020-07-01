@@ -329,23 +329,6 @@ flitdata %>%
 summary(aov(index ~ sp*temp*salinity, data = flitdata))
 
 
-
-# alpha/salinity relationship ####################
-
-slopes <- data.frame(alpha.value=c(3.13,1.42,0),
-                     salinity=c(23.5,50,70))
-
-ggplot(slopes,aes(x=salinity,y=alpha.value)) +
-  geom_point()+
-  geom_smooth(method="lm")+
-  theme_bw()+
-  xlab("Salinity (PSU)")+
-  ylab("Alpha value (deg)")+
-  My_Theme
-
-summary(lm(c(3.13,1.42,0)~c(23.5,50,70)))
-
-
 #####################
 # ANCOVA
 #####################
@@ -407,3 +390,28 @@ ggplot(sum.FA,aes(y=FA.Concentration,x=temperature,col=sp)) +
 		xlab(expression(paste("Temperature (°C)")))+
 		theme(strip.background = element_rect(fill="white"))+
 		My_Theme
+
+#####################
+# Supp. Mat A2
+#####################
+
+# alpha/salinity relationship ####################
+
+slopes <- data.frame(alpha.value=c(3.13,1.42,0),
+                     salinity=c(23.5,50,70))
+
+ggplot(slopes,aes(x=salinity,y=alpha.value)) +
+  geom_point()+
+  geom_smooth(method="lm")+
+  theme_bw()+
+  xlab("Salinity (PSU)")+
+  ylab(expression(paste(alpha,"-value (deg)")))+
+  My_Theme
+
+summary(lm(c(3.13,1.42,0)~c(23.5,50,70)))
+
+
+
+
+
+
