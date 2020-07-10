@@ -1,6 +1,6 @@
 # Paradendriphyella
 
-Supplementary materials for paper entitled: Laminariales host does impact lipid temperature trajectories of the fungal endophyte Paradendryphiella salina (G.K. Sutherl.) by  Vallet_et_al.
+Supplementary materials for paper entitled: Laminariales host does impact lipid temperaturetrajectories of the fungal endophyte Paradendryphiella salina (Sutherland.) by  Vallet_et_al.
 
 txt files contain raw GC-FID data used in the analysis, tailored for ease of manipulation with R. 'R_Script_Vallet_et_al_mar_drugs.R' file contains the in-house R script used for data processing, univariate and multivariate statistics as well as figures. 'fill.C23copy.txt' file contains the amount of internal standard (C23) and the weight (in mg) of each sample. 
 
