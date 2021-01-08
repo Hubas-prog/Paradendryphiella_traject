@@ -21,10 +21,8 @@ library(cowplot)
 #####################
 
 # Optional ####################
-#setwd("/Users/cedric.hubas/Desktop/Working_Directory/") # change working directory address if needed
 
 # file extraction and upload ####################
-#path <- "/Users/cedric.hubas/Desktop/Working_Directory/" # change working directory address if needed 
 files <- list.files(pattern="*.txt") # if path changed use argument path = path
 List <- lapply(files, function(x) read.table(x,skip=1)[,c(2,4)])
 
